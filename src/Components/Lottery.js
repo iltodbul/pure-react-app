@@ -13,13 +13,16 @@ class Lottery extends Component {
   }
 
   renderTickets() {
-    const lotteryTickets = this.props.tickets.map((ticket, index) => {
+    const { tickets, actions } = this.props;
+    const lotteryTicketActions = { removeTicket: actions.removeTicket };
+    const lotteryTickets = tickets.map((ticket, index) => {
       return (
         <LotteryTicket
           color={ticket.color}
           number={ticket.number}
           index={index}
           key={index}
+          actions={lotteryTicketActions}
         />
       );
     });

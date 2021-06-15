@@ -15,3 +15,13 @@ export function registerTicket() {
     };
   });
 }
+
+export function removeTicket(index) {
+  this.setState((prevState) => {
+    prevState.tickets.splice(index, 1);
+    return {
+      tickets: prevState.tickets,
+      remainingTickets: prevState.remainingTickets + 1,
+    };
+  });
+}
