@@ -25,3 +25,7 @@ export function removeTicket(index) {
     };
   });
 }
+
+export function finish() {
+  this.setState({ finished: true });
+}

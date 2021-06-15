@@ -9,7 +9,7 @@ class Lottery extends Component {
     if (remainingTickets > 0) {
       return <button onClick={actions.registerTicket}>КУПИ БИЛЕТ</button>;
     }
-    return <button>ПРОВЕРИ ПЕЧАЛБА</button>;
+    return <button onClick={actions.finish}>ПРОВЕРИ ЗА ПЕЧАЛБА</button>;
   }
 
   renderTickets() {

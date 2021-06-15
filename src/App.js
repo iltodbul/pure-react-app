@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Lottery from './Components/Lottery';
+import Final from './Components/Final';
 import { getRandomNumber } from './Helper/utils';
-import { registerTicket } from './Helper/actions';
-import { removeTicket } from './Helper/actions';
+import { registerTicket, removeTicket, finish } from './Helper/actions';
 
 class App extends Component {
   constructor(props) {
@@ -19,13 +19,20 @@ class App extends Component {
 
     this.registerTicket = registerTicket.bind(this);
     this.removeTicket = removeTicket.bind(this);
+    this.finish = finish.bind(this);
   }
 
   renderApp() {
     const actions = {};
-    const { tickets, remainingTickets } = this.state;
+    const { tickets, remainingTickets, finished, winningNumber } = this.state;
+
+    if (finished) {
+      return <Final tickets={tickets} winningNumber={winningNumber} />;
+    }
+
     actions.registerTicket = this.registerTicket;
     actions.removeTicket = this.removeTicket;
+    actions.finish = this.finish;
 
     return (
       <Lottery
