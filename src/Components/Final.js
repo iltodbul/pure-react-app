@@ -17,7 +17,7 @@ class Final extends Component {
     return (
       <>
         <h2>Честито!</h2>
-        <h3>Ти спечели 1 милион лева</h3>
+        <h3>Ти спечели нова junior позиция в желаната от теб компания</h3>
         <p>
           Твоето печелившо число беше: <b>{this.props.winningNumber}</b>
         </p>
@@ -40,6 +40,7 @@ class Final extends Component {
     return (
       <div style={{ backgroundColor: getRandomColor(), padding: 15 }}>
         {this.isWinning() ? this.renderWinning() : this.renderTryAgain()}
+        <button onClick={this.props.actions.reset}>НОВО ТЕГЛЕНЕ</button>
       </div>
     );
   }

@@ -29,3 +29,12 @@ export function removeTicket(index) {
 export function finish() {
   this.setState({ finished: true });
 }
+
+export function reset() {
+  this.setState({
+    winningNumber: getRandomNumber(),
+    tickets: [],
+    remainingTickets: 5,
+    finished: false,
+  });
+}
