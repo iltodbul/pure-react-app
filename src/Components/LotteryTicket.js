@@ -13,7 +13,7 @@ class LotteryTicket extends Component {
           marginBottom: 25,
         }}
         size="small"
-        title="Билетче"
+        title="Лотариен билет с номер"
       >
         <b>
           <Title level={4}>{number}</Title>

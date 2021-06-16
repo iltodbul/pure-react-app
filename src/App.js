@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'antd/dist/antd.css';
+import { Layout } from 'antd';
 
-import Lottery from './Components/Lottery';
-import Final from './Components/Final';
-import { getRandomNumber } from './Helper/utils';
-import { registerTicket, removeTicket, finish, reset } from './Helper/actions';
+import AppHeader  from './Components/AppHeader';
+import Lottery    from './Components/Lottery';
+import Final      from './Components/Final';
+import AppFooter  from './Components/AppFooter';
+
+import { getRandomNumber }                              from './Helper/utils';
+import { registerTicket, removeTicket, finish, reset }  from './Helper/actions';
+
+const { Content } = Layout;
 
 class App extends Component {
   constructor(props) {
@@ -54,7 +60,23 @@ class App extends Component {
   }
 
   render() {
-    return <div className="App">{this.renderApp()}</div>;
+    return (
+      <Layout className="layout">
+        <AppHeader />
+        <Content style={{ padding: '0 50px', textAlign: 'center' }}>
+          <div
+            style={{
+              minHeight: 280,
+              padding: 24,
+              background: '#fff',
+            }}
+          >
+            {this.renderApp()}
+          </div>
+        </Content>
+        <AppFooter />
+      </Layout>
+    );
   }
 }
 
