@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
+import { Layout } from 'antd';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+
+import AppHeader from './Components/AppHeader';
+import About from './Components/About';
+import Lottery from './Components/Lottery';
+import Final from './Components/Final';
+import AppFooter from './Components/AppFooter';
+
+import { getRandomNumber } from './Helper/utils';
+import { registerTicket, removeTicket, finish, reset } from './Helper/actions';
+
 import './App.css';
 import 'antd/dist/antd.css';
-import { Layout } from 'antd';
-
-import AppHeader  from './Components/AppHeader';
-import Lottery    from './Components/Lottery';
-import Final      from './Components/Final';
-import AppFooter  from './Components/AppFooter';
-
-import { getRandomNumber }                              from './Helper/utils';
-import { registerTicket, removeTicket, finish, reset }  from './Helper/actions';
 
 const { Content } = Layout;
 
@@ -61,21 +64,27 @@ class App extends Component {
 
   render() {
     return (
-      <Layout className="layout">
-        <AppHeader />
-        <Content style={{ padding: '0 50px', textAlign: 'center' }}>
-          <div
-            style={{
-              minHeight: 280,
-              padding: 24,
-              background: '#fff',
-            }}
-          >
-            {this.renderApp()}
-          </div>
-        </Content>
-        <AppFooter />
-      </Layout>
+      <BrowserRouter>
+        <Layout className="layout">
+          <AppHeader />
+          <Content style={{ padding: '0 50px', textAlign: 'center' }}>
+            <div
+              style={{
+                minHeight: 280,
+                padding: 24,
+                background: '#fff',
+              }}
+            >
+              <Switch>
+                <Route path="/" exact component={() => this.renderApp()} />
+                <Route path="/about" component={About} />
+                <Redirect from="*" to="/about" />
+              </Switch>
+            </div>
+          </Content>
+          <AppFooter />
+        </Layout>
+      </BrowserRouter>
     );
   }
 }

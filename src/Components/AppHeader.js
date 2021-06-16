@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Layout, Menu } from 'antd';
+import { Link } from 'react-router-dom';
 
 const { Header } = Layout;
 
@@ -10,11 +11,15 @@ class AppHeader extends Component {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={['/']}
+          defaultSelectedKeys={[window.location.pathname]}
           style={{ lineHeight: '64px' }}
         >
-          <Menu.Item key="/">Начало</Menu.Item>
-          <Menu.Item key="/about">За нас</Menu.Item>
+          <Menu.Item key="/">
+            <Link to="/">Начало</Link>
+          </Menu.Item>
+          <Menu.Item key="/about">
+            <Link to="/about">За лотарията</Link>
+          </Menu.Item>
         </Menu>
       </Header>
     );
