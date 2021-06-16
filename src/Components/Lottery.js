@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
+import { Button, Typography, Divider } from 'antd';
 
 import LotteryTicket from './LotteryTicket';
+
+const {Title} = Typography;
 
 class Lottery extends Component {
   renderButton() {
     const { remainingTickets, actions } = this.props;
 
     if (remainingTickets > 0) {
-      return <button onClick={actions.registerTicket}>КУПИ БИЛЕТ</button>;
+      return (
+        <Button type="primary" block onClick={actions.registerTicket}>
+          КУПИ БИЛЕТ
+        </Button>
+      );
     }
-    return <button onClick={actions.finish}>ПРОВЕРИ ЗА ПЕЧАЛБА</button>;
+    return (
+      <Button type="primary" block onClick={actions.finish}>
+        ПРОВЕРИ ЗА ПЕЧАЛБА
+      </Button>
+    );
   }
 
   renderTickets() {
@@ -32,12 +43,12 @@ class Lottery extends Component {
   render() {
     return (
       <>
-        <h2>Лотария</h2>
+        <Title>Лотария</Title>
         {this.renderButton()}
         <br />
-        <small>Оставащи: {this.props.remainingTickets}</small>
+        <Title level={4}>Оставащи: {this.props.remainingTickets}</Title>
         <br />
-        <hr />
+        <Divider>вашите билетчета</Divider>
         {this.renderTickets()}
       </>
     );

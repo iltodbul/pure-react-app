@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import 'antd/dist/antd.css';
 
 import Lottery from './Components/Lottery';
 import Final from './Components/Final';
@@ -26,9 +27,9 @@ class App extends Component {
   renderApp() {
     const actions = {};
     const { tickets, remainingTickets, finished, winningNumber } = this.state;
-    
+
     if (finished) {
-      actions.reset = this.reset; 
+      actions.reset = this.reset;
       return (
         <Final
           tickets={tickets}
