@@ -1,9 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Съвсем обикновено приложение с цел запознаване с възможностите на React.
-Използвани са клас компоненти и функционални компоненти и Hook
+Lightweight React app featuring class and functional components with Hooks.
 
-Ползвани допълнителни библиотеки:
+Additional libraries used:
 - React Router
 - Ant Design
 
